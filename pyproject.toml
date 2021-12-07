@@ -4,9 +4,12 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "py-rmrk-tools"
-version = "v0.1.0a0"
+version = "v0.1.0a1"
 description = ""
 authors = ["Alisher A. Khassanov <a.khssnv@gmail.com>"]
+packages = [
+    { include = "rmrk_tools" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
