@@ -4,7 +4,7 @@ import json
 import urllib.parse
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Final, Mapping, Optional, TypeAlias
+from typing import Any, Final, Mapping, Optional, Union
 
 PREFIX: Final = "RMRK"
 VERSION: Final = "2.0.0"
@@ -44,13 +44,13 @@ class Mutation:
 
 @dataclass
 class Attribute:
-    type: list | dict | int | float | str
+    type: Union[list, dict, int, float, str]
     value: Any
     mutation: Optional[Mutation] = None
 
 
-Properties: TypeAlias = Mapping[str, Attribute]
-Reactionmap: TypeAlias = Mapping[str, list[str]]
+Properties = Mapping[str, Attribute]
+Reactionmap = Mapping[str, list[str]]
 
 
 @dataclass
@@ -70,7 +70,7 @@ class NFTChild:
     pending: bool
 
 
-Theme: TypeAlias = Mapping[str, str | bool]
+Theme = Mapping[str, Union[str, bool]]
 
 
 @dataclass
@@ -175,7 +175,7 @@ class NFT:
         return f"{PREFIX}::{OP_TYPES.SEND}::{VERSION}::{id_}::{recipient}"
 
     @classmethod
-    def list_by_id(cls, id_: str, price: int | float) -> str:
+    def list_by_id(cls, id_: str, price: Union[int, float]) -> str:
         return (
             f"{PREFIX}::{OP_TYPES.LIST}::{VERSION}::{id_}::{price if price > 0 else 0}"
         )
@@ -185,10 +185,10 @@ class NFT:
         return f"{PREFIX}::{OP_TYPES.BURN}::{VERSION}::{id_}"
 
     @classmethod
-    def from_remark(cls, remark: str, block: int = 0) -> NFT | str:
+    def from_remark(cls, remark: str, block: int = 0) -> Union[NFT, str]:
         ...
 
-    def list(self, price: int | float) -> str:
+    def list(self, price: Union[int, float]) -> str:
         ...
 
     def buy(self, recipient: Optional[str] = None) -> str:
