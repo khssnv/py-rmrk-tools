@@ -193,3 +193,13 @@ class NFT:
 
     def buy(self, recipient: Optional[str] = None) -> str:
         ...
+
+
+@dataclass
+class NFTMetadata:
+    external_url: Optional[str] = None
+    image: Optional[str] = None
+    image_data: Optional[str] = None
+    description: Optional[str] = None
+    name: Optional[str] = None
+    properties: Optional[Properties] = None
