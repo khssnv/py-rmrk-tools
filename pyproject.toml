@@ -5,11 +5,17 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "py-rmrk-tools"
 version = "v0.1.0a3"
-description = ""
+description = "Python port of Typescript rmrk-tools."
+
 authors = ["Alisher A. Khassanov <a.khssnv@gmail.com>"]
+homepage = "https://github.com/khssnv/py-rmrk-tools"
+keywords = ["rmrk", "nft", "kusama", "polkadot"]
 packages = [
     { include = "rmrk_tools" },
 ]
+readme = "README.md"
+repository = "https://github.com/khssnv/py-rmrk-tools"
+
 
 [tool.poetry.dependencies]
 python = "^3.9"
