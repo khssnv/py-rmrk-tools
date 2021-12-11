@@ -4,7 +4,7 @@ import json
 import urllib.parse
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Final, Mapping, Optional, Union
+from typing import Any, Final, Optional, Union
 
 PREFIX: Final = "RMRK"
 VERSION: Final = "2.0.0"
@@ -49,8 +49,8 @@ class Attribute:
     mutation: Optional[Mutation] = None
 
 
-Properties = Mapping[str, Attribute]
-Reactionmap = Mapping[str, list[str]]
+Properties = dict[str, Attribute]
+Reactionmap = dict[str, list[str]]
 
 
 @dataclass
@@ -70,7 +70,7 @@ class NFTChild:
     pending: bool
 
 
-Theme = Mapping[str, Union[str, bool]]
+Theme = dict[str, Union[str, bool]]
 
 
 @dataclass
