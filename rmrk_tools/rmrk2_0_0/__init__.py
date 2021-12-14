@@ -159,7 +159,7 @@ class NFT:
                     "properties": self.properties,
                 }
             ),
-            safe='~()*!."',
+            safe="~()*!.'",
         )
         end = ("::" + recipient.replace(r"\s", "")) if recipient else ""
         return f"{PREFIX}::{OP_TYPES.MINT.value}::{VERSION}::{url}" + end
