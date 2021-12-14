@@ -162,7 +162,7 @@ class NFT:
             safe='~()*!."',
         )
         end = ("::" + recipient.replace(r"\s", "")) if recipient else ""
-        return f"{PREFIX}::{OP_TYPES.MINT}::{VERSION}::{url}" + end
+        return f"{PREFIX}::{OP_TYPES.MINT.value}::{VERSION}::{url}" + end
 
     def send(self, recipient: str) -> str:
         if not self.block:
@@ -172,17 +172,18 @@ class NFT:
     @classmethod
     def send_by_id(cls, id_: str, recipient: str) -> str:
         recipient = recipient.replace(r"\s", "")
-        return f"{PREFIX}::{OP_TYPES.SEND}::{VERSION}::{id_}::{recipient}"
+        return f"{PREFIX}::{OP_TYPES.SEND.value}::{VERSION}::{id_}::{recipient}"
 
     @classmethod
     def list_by_id(cls, id_: str, price: Union[int, float]) -> str:
         return (
-            f"{PREFIX}::{OP_TYPES.LIST}::{VERSION}::{id_}::{price if price > 0 else 0}"
+            f"{PREFIX}::{OP_TYPES.LIST.value}::{VERSION}::{id_}::"
+            f"{price if price > 0 else 0}"
         )
 
     @classmethod
     def burn_by_id(cls, id_: str) -> str:
-        return f"{PREFIX}::{OP_TYPES.BURN}::{VERSION}::{id_}"
+        return f"{PREFIX}::{OP_TYPES.BURN.value}::{VERSION}::{id_}"
 
     @classmethod
     def from_remark(cls, remark: str, block: int = 0) -> Union[NFT, str]:
