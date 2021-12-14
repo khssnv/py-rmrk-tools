@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "py-rmrk-tools"
-version = "0.1.0a7"
+version = "0.1.0a8"
 description = "Python port of Typescript rmrk-tools."
 license = "MIT"
 
