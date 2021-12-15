@@ -56,7 +56,7 @@ class NFTMetadata:
     image_data: Optional[str] = None
     description: Optional[str] = None
     name: Optional[str] = None
-    attributes: Optional[Attribute] = None
+    attributes: list[Attribute] = []
     background_color: Optional[str] = None
     animation_url: Optional[str] = None
     youtube_url: Optional[str] = None
