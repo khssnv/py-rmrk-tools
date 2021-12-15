@@ -1,6 +1,6 @@
 import json
 import urllib.parse
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Final, Literal, Optional, Union
 
@@ -56,7 +56,7 @@ class NFTMetadata:
     image_data: Optional[str] = None
     description: Optional[str] = None
     name: Optional[str] = None
-    attributes: list[Attribute] = []
+    attributes: list[Attribute] = field(default_factory=list)
     background_color: Optional[str] = None
     animation_url: Optional[str] = None
     youtube_url: Optional[str] = None
