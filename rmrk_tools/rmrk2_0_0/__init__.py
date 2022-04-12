@@ -167,7 +167,7 @@ class NFT:
     def send(self, recipient: str) -> str:
         if not self.block:
             raise Exception("the NFT does not exists")
-        return NFT.send_by_id(self.get_id, recipient)
+        return NFT.send_by_id(self.get_id(), recipient)
 
     @classmethod
     def send_by_id(cls, id_: str, recipient: str) -> str:
