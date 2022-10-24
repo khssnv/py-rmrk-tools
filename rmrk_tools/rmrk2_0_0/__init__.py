@@ -4,7 +4,7 @@ import json
 import urllib.parse
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Final, Optional, Union
+from typing import Any, Final, List, Optional, Union
 
 PREFIX: Final = "RMRK"
 VERSION: Final = "2.0.0"
@@ -204,3 +204,48 @@ class NFTMetadata:
     description: Optional[str] = None
     name: Optional[str] = None
     properties: Optional[Properties] = None
+
+
+class Collection:
+    block: int
+    max_: int
+    issuer: str
+    symbol: str
+    id_: str
+    metadata: str
+    changes: List[Change] = []
+    count = 0
+
+    def __init__(
+        self,
+        block: int,
+        max_: int,
+        issuer: str,
+        symbol: str,
+        id_: str,
+        metadata: str,
+    ):
+        self.block = block
+        self.max_ = max_
+        self.issuer = issuer
+        self.symbol = symbol
+        self.id_ = id_
+        self.metadata = metadata
+
+    def create(self) -> str:
+        if self.block:
+            raise Exception("already created")
+        url = urllib.parse.quote(
+            json.dumps(
+                {
+                    "max": self.max_,
+                    "issuer": self.issuer,
+                    "symbol": self.symbol,
+                    "id": self.id_,
+                    "metadata": self.metadata,
+                },
+                separators=(",", ":"),
+            ),
+            safe="~()*!.'",
+        )
+        return f"{PREFIX}::{OP_TYPES.CREATE.value}::{VERSION}::{url}"
