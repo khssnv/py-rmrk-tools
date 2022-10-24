@@ -249,3 +249,9 @@ class Collection:
             safe="~()*!.'",
         )
         return f"{PREFIX}::{OP_TYPES.CREATE.value}::{VERSION}::{url}"
+
+    @classmethod
+    def generate_id(cls, pubkey: str, symbol: str) -> str:
+        if not pubkey.startswith("0x"):
+            raise Exception("pubkey should start with 0x")
+        return pubkey[2:11] + pubkey[:-8] + "-" + symbol.upper()
