@@ -1,34 +1,36 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
+[project]
 name = "py-rmrk-tools"
-version = "0.1.0a12"
 description = "Python port of Typescript rmrk-tools."
-license = "MIT"
-
-authors = ["Alisher A. Khassanov <a.khssnv@gmail.com>"]
-homepage = "https://github.com/khssnv/py-rmrk-tools"
-keywords = ["rmrk", "nft", "kusama", "polkadot"]
-packages = [
-    { include = "rmrk_tools" },
-]
 readme = "README.md"
-repository = "https://github.com/khssnv/py-rmrk-tools"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = ["rmrk", "nft", "kusama", "polkadot"]
+authors = [{ name = "Alisher A. Khassanov", email = "a.khssnv@gmail.com" }]
+dynamic = ["version"]
 
+[project.urls]
+Homepage = "https://github.com/khssnv/py-rmrk-tools"
 
-[tool.poetry.dependencies]
-python = "^3.9"
+[project.optional-dependencies]
+all = [
+    "pytest >=5.2,<6.0.0",
+    "ipython >=7.30.1,<8.0.0",
+    "black >=21.12b0,<22.0",
+    "flake8 >=4.0.1,<5.0.0",
+    "isort >=5.10.1,<6.0.0",
+    "pre-commit >=2.16.0,<3.0.0",
+    "pylint >=2.12.2,<3.0.0",
+]
 
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-ipython = "^7.30.1"
-black = "^21.12b0"
-flake8 = "^4.0.1"
-isort = "^5.10.1"
-pre-commit = "^2.16.0"
-pylint = "^2.12.2"
+[tool.hatch.build]
+include = ["rmrk_tools"]
+
+[tool.hatch.version]
+path = "rmrk_tools/__init__.py"
 
 [tool.black]
 line-length = 88
