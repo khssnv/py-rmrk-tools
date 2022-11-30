@@ -12,15 +12,19 @@ Python 3.9 and higher supported.
 pip install py-rmrk-tools
 ```
 
-ToDo
-----
+What's done
+-----------
 
-- [ ] Entities definition
-    - [x] NFT
-    - [ ] Collection
-- [ ] CLI
-- [ ] Consolidator
-- [ ] RemarkListener
-- [ ] fetchRemarks
-- [ ] IPFS helpers
-- [ ] Validation
+### RMRK 1.0.0
+
+- [x] Constants and enums,
+- [x] Definitions: Attribute, Properties, Reactionmap, Change, NFTMetadata,
+- [x] NFT entity,
+- [ ] Collection entity.
+
+### RMRK 2.0.0
+
+- [x] Constants and enums,
+- [x] Definitions: MutationOp, Mutation, Attribute, Properties, Reactionmap, Change, NFTChild, ResourceConsolidated, NFTInstanceConf, NFTMetadata,
+- [x] NFT entity,
+- [x] Collection entity (partially).
